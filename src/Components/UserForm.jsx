@@ -9,9 +9,11 @@ const UserForm = () => {
 
   const userDetails = {
     id: Math.random(),
-    name,
-    age,
+    name: name,
+    age: age,
     greenPass: "",
+    greenPassApplied: null,
+    greenPassStatus: null,
   };
 
   const onSubmitHandler = (e) => {

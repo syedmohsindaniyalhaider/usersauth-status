@@ -25,15 +25,24 @@ const Admin = () => {
             <tr key={item.id}>
               <td style={{ padding: "10px" }}>{item.name || "-"}</td>
               <td style={{ padding: "10px" }}>{item.age || "-"}</td>
-              <td style={{ padding: "10px" }}>{item.greenPass || "-"}</td>
               <td style={{ padding: "10px" }}>
-                <button onClick={() => onAcceptHandler(item.id)}>Accept</button>
-                <button
-                  onClick={() => onRejectHandler(item.id)}
-                  style={{ marginLeft: "5px" }}
-                >
-                  Reject
-                </button>
+                {(item.greenPassStatus && item.greenPass) || "-"}
+              </td>
+              <td style={{ padding: "10px" }}>
+                {(!item.greenPassStatus && item.greenPassApplied && (
+                  <>
+                    <button onClick={() => onAcceptHandler(item.id)}>
+                      Accept
+                    </button>
+                    <button
+                      onClick={() => onRejectHandler(item.id)}
+                      style={{ marginLeft: "5px" }}
+                    >
+                      Reject
+                    </button>
+                  </>
+                )) ||
+                  "-"}
               </td>
             </tr>
           ))}

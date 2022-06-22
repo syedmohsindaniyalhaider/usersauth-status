@@ -11,7 +11,6 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_USER": {
       const updatedUsers = state.users.concat(action.payload);
-      console.log("Updated Users::", updatedUsers);
       return {
         users: updatedUsers,
       };
@@ -23,13 +22,11 @@ const reducer = (state, action) => {
         (item) => item.id === action.payload
       );
       const userData = state.users[userExistIndex];
+      userData.greenPass = "Requested";
+      userData.greenPassApplied = true;
       let updatedUsers;
-      const updateUser = {
-        ...userData,
-        greenPass: "Requested",
-      };
       updatedUsers = [...state.users];
-      updatedUsers[userExistIndex] = updateUser;
+      updatedUsers[userExistIndex] = userData;
       console.log("Users::", updatedUsers);
       return { users: updatedUsers };
     }
@@ -38,13 +35,11 @@ const reducer = (state, action) => {
         (item) => item.id === action.payload
       );
       const userData = state.users[userExistIndex];
+      userData.greenPass = "Accepted";
+      userData.greenPassStatus = true;
       let updatedUsers;
-      const updateUser = {
-        ...userData,
-        greenPass: "Accepted",
-      };
       updatedUsers = [...state.users];
-      updatedUsers[userExistIndex] = updateUser;
+      updatedUsers[userExistIndex] = userData;
       return {
         users: updatedUsers,
       };
@@ -54,13 +49,11 @@ const reducer = (state, action) => {
         (item) => item.id === action.payload
       );
       const userData = state.users[userExistIndex];
+      userData.greenPass = "Rejected";
+      userData.greenPassStatus = true;
       let updatedUsers;
-      const updateUser = {
-        ...userData,
-        greenPass: "Rejected",
-      };
       updatedUsers = [...state.users];
-      updatedUsers[userExistIndex] = updateUser;
+      updatedUsers[userExistIndex] = userData;
       return {
         users: updatedUsers,
       };

@@ -17,7 +17,6 @@ const User = () => {
           <tr>
             <th style={{ padding: "10px" }}>Name</th>
             <th style={{ padding: "10px" }}>Age</th>
-            <th style={{ padding: "10px" }}>Status</th>
             <th style={{ padding: "10px" }}>Green Pass</th>
           </tr>
         </thead>
@@ -26,9 +25,11 @@ const User = () => {
             <tr key={item.id}>
               <td style={{ padding: "10px" }}>{item.name || "-"}</td>
               <td style={{ padding: "10px" }}>{item.age || "-"}</td>
-              <td style={{ padding: "10px" }}>{item.greenPass || "-"}</td>
               <td style={{ padding: "10px" }}>
-                <button onClick={() => onApplyHandler(item.id)}>Apply</button>
+                {!item.greenPassApplied && (
+                  <button onClick={() => onApplyHandler(item.id)}>Apply</button>
+                )}
+                {item.greenPassApplied && item.greenPass}
               </td>
             </tr>
           ))}
