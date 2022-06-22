@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
-import User from "./Components/User";
+import Registration from "./Components/Registration/Registration";
+import User from "./Components/Users/User";
 import UserProvider from "./Context/UserProvider";
-import Admin from "./Components/Admin";
+import Admin from "./Components/Admin/Admin";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
           <h3>Users</h3>
           <User />
           <h3>Admin</h3>
+          <Registration />
           <Admin />
         </UserProvider>
       </div>

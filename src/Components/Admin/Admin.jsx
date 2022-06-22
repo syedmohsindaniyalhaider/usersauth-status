@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import UserContext from "../Context/UserContext";
+import React, { useContext } from "react";
+import UserContext from "../../Context/UserContext";
 
 const Admin = () => {
   const userCtx = useContext(UserContext);
