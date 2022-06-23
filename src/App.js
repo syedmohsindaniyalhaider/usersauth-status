@@ -12,9 +12,9 @@ function App() {
         <UserProvider>
           <h3>Users</h3>
           <User />
+          <Admin />
           <h3>Admin</h3>
           <Registration />
-          <Admin />
         </UserProvider>
       </div>
     </>

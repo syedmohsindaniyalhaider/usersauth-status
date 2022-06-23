@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useInput from "../../../Hooks/use-input";
 
-const SignUpForm = (props) => {
+const SignUpForm = ({ sendData }) => {
   const {
     value: email,
     hasError: emailHasError,
@@ -21,8 +21,14 @@ const SignUpForm = (props) => {
 
   let formIsValid = emailIsValid && passwordIsValid;
 
+  let userDetails = {
+    email: email,
+    password: password,
+  };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    sendData(userDetails);
     resetEmail();
     resetPassword();
   };
@@ -68,11 +74,28 @@ const SignUpForm = (props) => {
   );
 };
 
-const SignUpHttp = () => {};
+const SignUpHttp = () => {
+  const sendData = async (userDetails) => {
+    await fetch(
+      "https://usersauth-58fb3-default-rtdb.firebaseio.com/newUsers.json",
+      {
+        method: "POST",
+        body: JSON.stringify(userDetails),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
+  };
+  return (
+    <>
+      <SignUpForm sendData={sendData} />
+    </>
+  );
+};
 const SignUp = () => {
   return (
     <>
-      <SignUpForm />
       <SignUpHttp />
     </>
   );

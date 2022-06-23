@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useInput from "../../../Hooks/use-input";
 
-const SignInForm = (props) => {
+const SignInForm = ({ fetchData }) => {
   const {
     value: email,
     hasError: emailHasError,
@@ -23,6 +23,7 @@ const SignInForm = (props) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    fetchData();
     resetEmail();
     resetPassword();
   };
@@ -68,12 +69,29 @@ const SignInForm = (props) => {
   );
 };
 
-const SignInHttp = (props) => {};
+const SignInHttp = (props) => {
+  const fetchData = async () => {
+    const response = await fetch(
+      "https://usersauth-58fb3-default-rtdb.firebaseio.com/newUsers.json"
+    );
+    const data = await response.json();
+    let loadedUsers = [];
+    for (const key in data) {
+      loadedUsers.push({
+        userId: key,
+        email: data[key].email,
+        password: data[key].password,
+      });
+    }
+    
+  };
+
+  return <SignInForm fetchData={fetchData} />;
+};
 
 const SignIn = (props) => {
   return (
     <>
-      <SignInForm />
       <SignInHttp />
     </>
   );
