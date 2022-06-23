@@ -9,6 +9,9 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "LOGGED_IN": {
+      return state.users;
+    }
     case "ADD_USER": {
       const updatedUsers = state.users.concat(action.payload);
       return {

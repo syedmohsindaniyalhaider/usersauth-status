@@ -1,7 +1,7 @@
 import "./App.css";
 import Registration from "./Components/Registration/Registration";
 import User from "./Components/Users/User";
-import UserProvider from "./Context/UserProvider";
+import UserProvider from "./Context/Users/UserProvider";
 import Admin from "./Components/Admin/Admin";
 
 function App() {
