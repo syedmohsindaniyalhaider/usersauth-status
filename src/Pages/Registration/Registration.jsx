@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Admin from "../Layouts/Registration/Registration";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
 const Registration = (props) => {

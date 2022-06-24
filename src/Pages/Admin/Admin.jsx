@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import UserContext from "../../Context/Users/UserContext";
-
+import Admin from "../Layouts/Admin/Admin";
 const Admin = () => {
   const userCtx = useContext(UserContext);
   const onAcceptHandler = (id) => {
